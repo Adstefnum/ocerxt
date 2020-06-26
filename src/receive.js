@@ -1,7 +1,6 @@
 import React from 'react';
 import FileBase64 from 'react-file-base64';
 import './receive.css';
-import 'aws-sdk';
 
 class Receive extends React.Component {
 
@@ -44,13 +43,13 @@ class Receive extends React.Component {
                         method: "POST",
                         headers: {
                             Accept: "application/json",
-                            "Content-Type":"application/json"
+                            "Content-Type":"application/json",
                         },
                         body: JSON.stringify(data)
                     });
                     
                     let targetImage  = UID + ".png";
-                    const response = await fetch('https://4zd2019sk0.execute-api.us-east-1.amazonaws.com/Production',
+                    const response = await fetch('https://4zd2019sk0.execute-api.us-east-1.amazonaws.com/Production/ocr',
                     {
                         method: "POST",
                         headers: {

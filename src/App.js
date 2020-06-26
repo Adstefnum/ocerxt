@@ -1,5 +1,5 @@
 import React from 'react';
-import Receive from './receive.jsx';
+import Receive from './receive.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
