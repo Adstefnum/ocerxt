@@ -19,12 +19,10 @@ class Receive extends React.Component {
 
     async processSubmit(action){
         action.preventDefault();
-        this.setState({confirm: "Uploading"})
     }
 
     async getFiles(files) {
         this.setState({
-            isLoading: "Extracting Data...",
             files: files
     
                 });
@@ -54,7 +52,7 @@ class Receive extends React.Component {
                         method: "POST",
                         headers: {
                             Accept: "application/json",
-                            "Content-Type":"application/json"
+                            "Content-Type":"application/json",
                         },
                         body: JSON.stringify(targetImage)
                     });
@@ -63,6 +61,15 @@ class Receive extends React.Component {
                     const text = await response.json();
                         this.setState({Output : text.body});
     }
+
+     myFunction() {
+  /* Get the text field */
+  var copyText = document.getElementById("outy");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+  document.execCommand("copy");
+  alert("Copied to clipboard");
+}
 
     Chandler(action){
         action.preventDefault();
@@ -77,14 +84,14 @@ class Receive extends React.Component {
     
     
     render() { 
-        const processing = this.setState.confirm; 
+        var processing = this.state.confirm; 
         return ( 
             <div className="row">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"></link>
                 <div className = "col-6 offset-3">
                     <form onSubmit= {this.processSubmit} >
                         
-                            <h3 id = "progress" className="text-danger">{processing}</h3>
+                            <h2 id = "progress" className="text-danger" >{ processing }</h2>
                             <center><h6 id = "upload-text">Upload Image</h6></center>
                             <h6 id = "text">PNG,JPG</h6>
                         <div id = "upload" className = "form-group files color">
@@ -96,14 +103,21 @@ class Receive extends React.Component {
                             
                             <div className="field">
                     <div className="control">
-                        <textarea 
+                        <textarea id = "outy"
                         type= "name" name="output"
                         onChange = {this.Chandler}
                         required value = {this.state.Output} 
                         className="textarea is-large" placeholder="Large textarea"></textarea>
-  </div>
-</div>
+                      </div>
+                    </div>
+                    <button className= "copy" onClick={this.myFunction}>Copy</button>
                     </form>
+                    <h6>1. Not supported on mobile devices .<br />
+                        2. search "your browser name" + cors unblock.<br />
+                        3. Install and then click to activate it when it appears on top right corner.<br />
+                        4. If it does not appear, enable it first then activate.<br />
+                        5. Use ocerxt with no further stress.<br />
+                        6. Working to make completely more stress free very soon.</h6>
                 </div>
             </div>
          );
