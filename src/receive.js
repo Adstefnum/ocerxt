@@ -28,6 +28,7 @@ class Receive extends React.Component {
                 });
                 const UID = Math.floor(Math.random() * (99999 - 9999 + 1)) + 9999;
 
+
                 var data = {
                     fileExt: "png",
                     imageId: UID,
@@ -35,7 +36,7 @@ class Receive extends React.Component {
                     img: this.state.files[0].base64
                 }
             
-                this.setState({confirm: "Analyzing Image..."})
+                this.setState({confirm: "Receiving Image..."})
                await fetch('https://j8ksqpj0rl.execute-api.us-east-2.amazonaws.com/Production',
                     {
                         method: "POST",
@@ -46,6 +47,7 @@ class Receive extends React.Component {
                         body: JSON.stringify(data)
                     });
                     
+                    this.setState({confirm: "Extracting Text..."})
                     let targetImage  = UID + ".png";
                     const response = await fetch('https://4zd2019sk0.execute-api.us-east-1.amazonaws.com/Production/ocr',
                     {
@@ -56,17 +58,15 @@ class Receive extends React.Component {
                         },
                         body: JSON.stringify(targetImage)
                     });
-                    
                     this.setState({confirm: ""})
                     const text = await response.json();
                         this.setState({Output : text.body});
     }
 
      myFunction() {
-  /* Get the text field */
   var copyText = document.getElementById("outy");
   copyText.select();
-  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+  copyText.setSelectionRange(0, 99999);
   document.execCommand("copy");
   alert("Copied to clipboard");
 }
@@ -112,12 +112,6 @@ class Receive extends React.Component {
                     </div>
                     <button className= "copy" onClick={this.myFunction}>Copy</button>
                     </form>
-                    <h6>1. Not supported on mobile devices .<br />
-                        2. search "your browser name" + cors unblock.<br />
-                        3. Install and then click to activate it when it appears on top right corner.<br />
-                        4. If it does not appear, enable it first then activate.<br />
-                        5. Use ocerxt with no further stress.<br />
-                        6. Working to make completely more stress free very soon.</h6>
                 </div>
             </div>
          );
