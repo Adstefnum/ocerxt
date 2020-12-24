@@ -5,7 +5,8 @@ An OCR built on the reactjs framework and with aws textract.
 
 
 ##Usage
-visit at ocerxt.s3-website-us-east-1.amazonaws.com and upload your image then await the ouput and copy it from the textarea.
+visit at (http://ocerxt.s3-website-us-east-1.amazonaws.com)
+ and upload your image then await the ouput and copy it from the textarea.
 
 ##Support
 Looking for a UI/UX desiner that can vamp up the user experience.
@@ -14,6 +15,8 @@ Looking for a UI/UX desiner that can vamp up the user experience.
 Show the uploaded image
 Put a button there to extract text
 Show a progress bar for extraction update
+Make it mobile friendly
+Make an app
 
 ##Contributing
 Open to front-end design help but not full redesign
